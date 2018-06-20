@@ -1,0 +1,17 @@
+<a class="btn btn-success" (click)="addItem()" role="button">Add</a>
+<h4>{{schema.name}}</h4>
+<table class="table table-inverse table-inverse table-responsive">
+  <thead class="thead-inverse">
+    <tr>
+      <th *ngFor="let p of schema.formArray">{{p.label}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of data | async">
+      <td scope="row" *ngFor="let p of schema.formArray">{{d.payload.val()[p.id]}}</td>
+      <td scope="row">
+        <a class="btn btn-danger" (click)="delete(d.key)" role="button">Remove</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

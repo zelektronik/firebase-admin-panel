@@ -1,0 +1,57 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+  <div class="btn-group" aria-label="Input Type">
+    <label class="btn btn-primary" class="btn btn-secondary" (click)="changeType('fromJson')" role="button">From JSON</label>
+    <label class="btn btn-primary" class="btn btn-secondary" (click)="changeType('usingForm')" role="button">Using Form</label>
+  </div>
+
+  <form (submit)="submit($event)" *ngIf="inputType === 'fromJson'">
+    <div class="form-group">
+      <label for="modelStr">JSON</label>
+      <textarea name="modelStr" id="modelStr" [(ngModel)]="modelStr" class="form-control" cols="30" rows="10" placeholder="JSON string for Config"
+        aria-describedby="modelStr"></textarea>
+      <small id="modelStr" class="text-muted">JSON string for Config</small>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>
+
+  <form (submit)="submit($event)" *ngIf="inputType === 'usingForm'">
+    <div class="form-group">
+      <label for="apiKey">Api Key</label>
+      <input type="text" name="apiKey" [(ngModel)]="model.apiKey" id="apiKey" class="form-control" placeholder="Api Key" aria-describedby="apiKey">
+      <small id="apiKey" class="text-muted">Api Key</small>
+    </div>
+    <div class="form-group">
+      <label for="authDomain">Auth Domain</label>
+      <input type="text" name="authDomain" [(ngModel)]="model.authDomain" id="authDomain" class="form-control" placeholder="Auth Domain"
+        aria-describedby="authDomain">
+      <small id="authDomain" class="text-muted">Auth Domain</small>
+    </div>
+    <div class="form-group">
+      <label for="databaseURL">Database URL</label>
+      <input type="text" name="databaseURL" [(ngModel)]="model.databaseURL" id="databaseURL" class="form-control" placeholder="Database URL"
+        aria-describedby="databaseURL">
+      <small id="databaseURL" class="text-muted">Database URL</small>
+    </div>
+    <div class="form-group">
+      <label for="projectId">Project Id</label>
+      <input type="text" name="projectId" [(ngModel)]="model.projectId" id="projectId" class="form-control" placeholder="Project Id"
+        aria-describedby="projectId">
+      <small id="projectId" class="text-muted">Project Id</small>
+    </div>
+    <div class="form-group">
+      <label for="storageBucket">Storage Bucket</label>
+      <input type="text" name="storageBucket" [(ngModel)]="model.storageBucket" id="storageBucket" class="form-control" placeholder="Storage Bucket"
+        aria-describedby="storageBucket">
+      <small id="storageBucket" class="text-muted">Storage Bucket</small>
+    </div>
+
+    <div class="form-group">
+      <label for="messagingSenderId">Messaging Sender Id</label>
+      <input type="text" name="messagingSenderId" [(ngModel)]="model.messagingSenderId" id="messagingSenderId" class="form-control"
+        placeholder="Messaging Sender Id" aria-describedby="messagingSenderId">
+      <small id="messagingSenderId" class="text-muted">Messaging Sender Id</small>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>
+</div>
