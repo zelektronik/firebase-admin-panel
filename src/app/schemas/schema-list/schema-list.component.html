@@ -1,0 +1,20 @@
+<a class="btn btn-success" routerLink="/schemas/add" role="button">Add</a>
+<table class="table table-inverse table-inverse table-responsive">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Name</th>
+      <th>Schema</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let schema of schemas | async">
+      <td scope="row">{{schema.payload.val().name}}</td>
+      <td scope="row">{{schema.payload.val().formArray|json}}</td>
+      <td scope="row">
+        <a class="btn btn-success" (click)="addItem(schema.key)" role="button">Add Item</a>
+        <a class="btn btn-danger" (click)="delete(schema.key)" role="button">Remove</a>
+        <a class="btn btn-warning" (click)="edit(schema.key)" role="button">Edit</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

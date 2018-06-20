@@ -1,0 +1,10 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <button type="button" (click)="addItem()" class="btn btn-primary">Add Property</button>
+    <button type="button" (click)="clear()" class="btn btn-danger">Remove all Properties</button>
+  </div>
+  <dynamic-bootstrap-form [group]="formGroup" [model]="formModel"></dynamic-bootstrap-form>
+  <div class="row">
+    <button type="submit" [disabled]="formGroup.pristine" class="btn btn-success">Save</button>
+  </div>
+</form>
