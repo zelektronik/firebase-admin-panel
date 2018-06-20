@@ -33,6 +33,10 @@ export class SchemaEditComponent implements OnInit {
           .valueChanges()
           .subscribe(
             (d: { name: string, formArray: Array<any> }) => {
+              this.formService.clearFormArray(this.formArrayControl, this.formArrayModel);
+              for (let i = 0; i < d.formArray.length; i++) {
+                this.formService.addFormArrayGroup(this.formArrayControl, this.formArrayModel);
+              }
               this.formGroup.patchValue(d);
             }
           );

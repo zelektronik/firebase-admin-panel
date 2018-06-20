@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { DynamicFormService } from '@ng-dynamic-forms/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-entity-add',
-  templateUrl: './entity-add.component.html',
-  styleUrls: ['./entity-add.component.css']
+  selector: 'app-entity-edit',
+  templateUrl: './entity-edit.component.html',
+  styleUrls: ['./entity-edit.component.css']
 })
-export class EntityAddComponent implements OnInit {
+export class EntityEditComponent implements OnInit {
   schemaKey: string;
   formModel: any[];
-  formGroup: any;
+  formGroup: FormGroup;
   schema: any;
   constructor(private db: AngularFireDatabase,
     private router: Router,
@@ -29,6 +30,11 @@ export class EntityAddComponent implements OnInit {
               this.schema = d;
               this.formModel = this.formService.fromJSON(d.formArray);
               this.formGroup = this.formService.createFormGroup(this.formModel);
+              this.db.object(d.name + '/' + params.key)
+                .valueChanges()
+                .subscribe(e => {
+                  this.formGroup.patchValue(e);
+                });
             }
           );
       });

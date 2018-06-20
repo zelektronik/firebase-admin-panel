@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EntityListComponent } from './entity-list/entity-list.component';
 import { EntityAddComponent } from './entity-add/entity-add.component';
+import { EntityEditComponent } from './entity-edit/entity-edit.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'add',
     component: EntityAddComponent
+  },
+  {
+    path: 'edit/:key',
+    component: EntityEditComponent
   }
 ];
 

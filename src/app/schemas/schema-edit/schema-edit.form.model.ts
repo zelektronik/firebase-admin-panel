@@ -10,7 +10,6 @@ export const SCHEMA_EDIT_FORM_MODEL: DynamicFormControlModel[] = [
     }),
     new DynamicFormArrayModel({
         id: 'formArray',
-        initialCount: 1,
         groupFactory: () => {
             return [
                 new DynamicSelectModel({
