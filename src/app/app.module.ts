@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { SchemasModule } from './schemas/schemas.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { ServicesModule } from './services/services.module';
 
 const APP_ROUTES: Routes = [
   {
@@ -24,7 +25,7 @@ const APP_ROUTES: Routes = [
     AppComponent
   ],
   imports: [
-    BrowserModule, SchemasModule, FormsModule,
+    BrowserModule, SchemasModule, FormsModule, ServicesModule,
     RouterModule.forRoot(
       APP_ROUTES
     ),

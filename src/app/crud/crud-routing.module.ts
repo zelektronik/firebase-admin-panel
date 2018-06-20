@@ -3,11 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { EntityListComponent } from './entity-list/entity-list.component';
 import { EntityAddComponent } from './entity-add/entity-add.component';
 import { EntityEditComponent } from './entity-edit/entity-edit.component';
+import { LoginComponent } from './login/login.component';
+import { ReadGuard } from '../auth/guards/read.guard';
 
 const routes: Routes = [
   {
     path: 'list',
-    component: EntityListComponent
+    component: EntityListComponent,
+    canActivate: [ReadGuard]
   },
   {
     path: 'add',
@@ -16,6 +19,10 @@ const routes: Routes = [
   {
     path: 'edit/:key',
     component: EntityEditComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 

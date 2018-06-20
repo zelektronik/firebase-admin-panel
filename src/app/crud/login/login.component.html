@@ -1,0 +1,12 @@
+<div class="form-group">
+  <form (ngSubmit)="submit($event)"></form>
+  <label for="userName">Username</label>
+  <input type="text" name="userName" id="userName" [(ngModel)]="user.username" class="form-control">
+  <label for="userName">Password</label>
+  <input type="text" name="password" id="password" [(ngModel)]="user.password" class="form-control">
+  <button type="submit" class="btn btn-success">Login</button>
+</div>
+<div>
+  <button type="button" (click)="loginGoogle($event)" class="btn btn-secondary">Google</button>
+
+</div>
