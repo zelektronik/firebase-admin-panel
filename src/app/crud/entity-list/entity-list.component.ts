@@ -34,6 +34,9 @@ export class EntityListComponent implements OnInit {
   addItem() {
     this.router.navigate(['crud', 'add', { s: this.schemaKey }]);
   }
+  edit(key) {
+    this.router.navigate(['crud', 'edit', key, { s: this.schemaKey }]);
+  }
   delete(key) {
     this.db.list(this.schema.name).remove(key);
   }

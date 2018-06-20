@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     if (localStorage.getItem('firebaseConfig')) {
       this.title = JSON.parse(localStorage.getItem('firebaseConfig')).databaseURL;
+      
     }
   }
   removeConfig(event) {
