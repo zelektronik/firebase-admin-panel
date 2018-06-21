@@ -14,6 +14,7 @@ export class EntityEditComponent implements OnInit {
   formModel: any[];
   formGroup: FormGroup;
   schema: any;
+  entityKey: any;
   constructor(private db: AngularFireDatabase,
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -27,6 +28,7 @@ export class EntityEditComponent implements OnInit {
           .valueChanges()
           .subscribe(
             (d: { name: string, formArray: Array<any> }) => {
+              this.entityKey = params.key;
               this.schema = d;
               this.formModel = this.formService.fromJSON(d.formArray);
               this.formGroup = this.formService.createFormGroup(this.formModel);
@@ -40,7 +42,7 @@ export class EntityEditComponent implements OnInit {
       });
   }
   onSubmit() {
-    this.db.list(this.schema.name).push(this.formGroup.value).then(() => {
+    this.db.list(this.schema.name).set(this.entityKey, this.formGroup.value).then(() => {
       this.router.navigate(['crud', 'list', { s: this.schemaKey }]);
     });
   }
